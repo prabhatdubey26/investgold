@@ -19,4 +19,11 @@ class WalletTrasaction extends Model
         'json_response',
         'remarks'
     ];
+
+    // Define the relationship with the User model
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

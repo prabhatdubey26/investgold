@@ -72,6 +72,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('news', NewsController::class);
     Route::resource('team', TeamsController::class);
     Route::post('/order-status/{id}', [OrderController::class, 'updateOrderStatus'])->name('updateOrderStatus');
+    Route::get('/transactions', [PaymentController::class, 'showTransactions'])->name('admin.transactions');
 
 });
 

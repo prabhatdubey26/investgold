@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Razorpay\Api\Api;
+use App\Models\WalletTrasaction;
 
 class PaymentController extends Controller
 {
@@ -67,6 +68,12 @@ class PaymentController extends Controller
     {
         $successMessage = "Your payment was successful! Thank you for your order.";
         return view('success', compact('successMessage'));
+    }
+
+    public function showTransactions()
+    {
+        $transactions = WalletTrasaction::latest()->with('user')->paginate(20);
+        return view('admin.transactions', compact('transactions'));
     }
 
 }

@@ -52,6 +52,14 @@
                 <p>My Order</p>
               </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ url('admin/transactions')}}"  style="color: #000;" class="nav-link active">
+              <i class="far fa fa-arrow-right nav-icon"></i>
+                <p>Transactions</p>
+            </a>
+        </li>
+
+         
             <li class="nav-item">
                 <a href="{{url('userDetail')}}" style="color: #000;" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -74,6 +82,8 @@
                   <p>Navigation</p>
                 </a>
             </li>
+
+           
               <!--li class="nav-item">
               <a href="{{url('admin/slider_images')}}" style="color: #000;" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

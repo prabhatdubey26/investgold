@@ -36,10 +36,10 @@
   <link href="{{ asset('assets/storage/css/animate.css') }}" rel="stylesheet">
   <!-- Magnific Popup Core Css File -->
   <link rel="stylesheet" href="{{ asset('assets/storage/css/magnific-popup.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Mouse Cursor Css File -->
   <!--<link rel="stylesheet" href="css/mousecursor.css">-->
   <!-- Main Custom Css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="{{ asset('assets/storage/css/custom.css') }}" rel="stylesheet" media="screen">
   <link href="{{ asset('assets/storage/css/newstyle.css') }}" rel="stylesheet" media="screen">
   <link href="{{ asset('assets/storage/css/popup_style.css') }}" rel="stylesheet" media="screen">

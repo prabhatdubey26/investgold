@@ -29,40 +29,38 @@
               <div class="inner">
                 <h3>{{ Auth()->user()->wallet }}</h3>
     
-                <p>Wallet</p>
+                <p>Add Wallet</p>
               </div>
               <div class="icon">
                 <i class="fa fa-wallet"></i>
               </div>
-             
+              <a href="{{ route('user.wallet') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          {{-- <div class="col-lg-4 col-6">
-            <div class="small-box bg-success">
+          <div class="col-lg-4 col-6">
+            <div class="small-box bg-info">
               <div class="inner">
-                <h3>1</h3>
-
-                <p>Employee</p>
+                <h3>{{ $orderCount }}</h3>
+                <p>Order List</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fa fa-shopping-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('user/orderList')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <div class="col-lg-4 col-6">
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>1</h3>
-
-                <p>User Registrations</p>
+                <h3>{{ $trasCount }}</h3>
+                <p>Wallet Transactions</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('user.transaction') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-          </div> --}}
+          </div>
           
         </div> 
         

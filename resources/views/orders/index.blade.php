@@ -34,23 +34,27 @@
                 <thead>
                     <tr>
                         <th>OrderID</th>
+                        @if(Auth::user()->role==1)
                         <th>User</th>
+                        @endif
                         <th>Product</th>
                         <th>Price</th>
                         <th>Tax and Fee</th>
                         <th>Payment Status</th>
                         <th>Order Status</th>
-
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($orders as $order)
                         <tr>
                             <td>{{ $order->id }}</td>
+                            @if(Auth::user()->role==1)
                             <td>
                               <p>Name :{{ $order->user->name }}</p>
                               <p>Email :{{ $order->user->email }}</p>
                             </td>
+                            @endif
                             <td>
                               @php
                               $products = json_decode($order->product_details, true);
@@ -95,6 +99,7 @@
                             {{$order->order_status}}
                             @endif
                            </td>
+                           <td>{{ $order->created_at->format('Y-m-d H:i:s') }}</td>
                         </tr>
                     @endforeach
                 </tbody>

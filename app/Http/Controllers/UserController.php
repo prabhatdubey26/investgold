@@ -122,10 +122,31 @@ private function uploadFile($file, $directory)
 
     public function dashboard($id)
     {
-            $user = User::findOrFail($id);
-            $orderCount = Order::where('user_id',$user->id)->count();
-            $trasCount = WalletTrasaction::where('user_id',$user->id)->count();
-            return view('user.dashboard', compact('user','orderCount','trasCount'));
+        $user = User::findOrFail($id);
+        $orders = Order::where('user_id', $user->id)->get();
+
+        $goldOrderCount = 0;
+        $silverOrderCount = 0;
+        
+        foreach ($orders as $order) {
+            $productDetails = json_decode($order->product_details, true); // Decode the JSON
+        
+            // Check if product details exist
+            if ($productDetails) {
+                foreach ($productDetails as $product) {
+                    // Check the summary to count gold and silver
+                    if (isset($product['summary'])) {
+                        if ($product['summary'] === 'gold') {
+                            $goldOrderCount++;
+                        } elseif ($product['summary'] === 'silver') {
+                            $silverOrderCount++;
+                        }
+                    }
+                }
+            }
+        }
+        $trasCount = WalletTrasaction::where('user_id',$user->id)->count();
+        return view('user.dashboard', compact('user', 'goldOrderCount', 'silverOrderCount','trasCount'));
     }
     
     public function profile()

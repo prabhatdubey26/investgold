@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\WalletTrasaction;
+use App\Models\Order;
 use App\Models\UserDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -120,9 +122,10 @@ class LoginRegisterController extends Controller
     {
         if(Auth::check())
         {
-            
-
-            return view('auth.dashboard');
+            $orderCount = Order::count();
+            $trasCount = WalletTrasaction::count();
+            $userCount = User::count();
+            return view('auth.dashboard', compact('orderCount', 'trasCount', 'userCount'));
         }
         
         return redirect()->route('login')

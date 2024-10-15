@@ -35,7 +35,7 @@
                     <a href="https://www.facebook.com/krugerrands/" target="_blank">
                             <img src="{{ asset('assets/storage/img/latest.png') }}" alt="logo">
                         </a>
-                        <a href="{{ url('user/dashboard/' . session('user_id')) }}">{{ session('user_name') }}  <i class="fa fa-dollar"></i>{{ auth()->user()->wallet }}</a>
+                        <a href="{{ url('user/dashboard/' . session('user_id')) }}">{{ session('user_name') }} <i class="fa fa-dollar"></i>{{ auth()->user()->wallet }}</a>
                         <form action="{{ route('user.logout') }}" method="POST" style="display: inline;">
                         @csrf
                         <button type="submit"   class="btn">Logout</button>

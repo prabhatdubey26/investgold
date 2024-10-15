@@ -13,7 +13,7 @@
             <strong>Price: </strong>MUR {{$product->price}}
           </p>
           @if(!empty(session('user_id')))
-          <button data-id="{{$product->id}}" data-name="{{$product->title}}" data-summary="" data-price="{{$product->price}}" data-quantity="1" data-image="{{ asset('assets/storage/img/products/Mauritius/Silver/') }}/{{$product->image}}" class="btn btn-danger btn-sm my-cart-btn">Add to cart</button>
+          <button data-id="{{$product->id}}" data-name="{{$product->title}}" data-summary="{{$product->type}}" data-price="{{$product->price}}" data-quantity="1" data-image="{{ asset('assets/storage/img/products/Mauritius/Silver/') }}/{{$product->image}}" class="btn btn-danger btn-sm my-cart-btn">Add to cart</button>
           @else
           <button class="btn btn-danger btn-sm" onclick="openLoginPopup1()">Login to Add to Cart</button>
           @endif

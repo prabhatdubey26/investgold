@@ -72,6 +72,8 @@
                         </a>
                         <ul class="dropdown-menu">
                         <li>
+                          <a class="dropdown-item" href="{{ route('user.change-password') }}"
+                          >Change Password</a>
                              <form id="logout-form"  action="{{ route('user.logout') }}" method="POST" style="display: inline;">
                               @csrf
                               <button type="submit"   class="btn">Logout</button>

@@ -13,8 +13,12 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\TeamsController;
 
 
+Route::get('reset-password', [UserController::class, 'resetPassword'])->name('user.reset-password');
+Route::post('update-password', [UserController::class, 'updateResetPassword'])->name('password.update');
+Route::post('forgot-password', [UserController::class, 'forgotPassword'])->name('password.forgotPassword');
 
 Route::resource('/', HomeController::class);
+
 //Route::resource('/contact', HomeController::class);
 Route::get('/treeview', [TreeViewController::class, 'index']);
 Route::get('/contact', [HomeController::class,'contact'])->name('contact');
@@ -50,7 +54,7 @@ Route::post('/treeview/update', [TreeViewController::class, 'update']);
 Route::match(['get', 'post'], '/submit-form', [UserController::class, 'submitForm'])->name('submit-form');
 Route::match(['get', 'post'], '/user-login', [UserController::class, 'userLogin']);
 Route::controller(LoginRegisterController::class)->group(function() {
-     Route::get('/register', 'register')->name('register');
+    Route::get('/register', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
     Route::get('/admin', 'login')->name('login');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
@@ -97,9 +101,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/wallet', [UserController::class, 'wallet'])->name('user.wallet');
     Route::post('user/addwallet', [UserController::class, 'addWallet'])->name('user.addwallet');
     Route::get('user/transactions', [UserController::class, 'showTransactions'])->name('user.transaction');
-
-
-
+    Route::get('/change-password', [UserController::class, 'changePassword'])->name('user.change-password');
+    Route::post('/change-password', [UserController::class, 'updatePassword'])->name('user.changePassword');
 
 });
 

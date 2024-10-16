@@ -207,6 +207,7 @@
                     <input type="password" id="password" name="password" required/>
                     <div id="password-error" class="error-message"></div> 
                 </div>
+                <a href="#" id="forgotLink" style="text-decoration: underline;"> Forgot Password</a>
                 <div class="inputfield">
                     <button type="submit" class="btn">Login</button>
                 </div>
@@ -214,9 +215,33 @@
         </div>
     </div>    
 
-    
 
+    <div id="forgotPassword" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closeForgotPassword()">&times;</span>
+            @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+            @if (session('alert'))
+                <div class="alert alert-danger">{{ session('alert') }}</div>
+            @endif
 
+            <h2>Forgot Password</h2>
+            <span id="error_show1"></span>
+            <form id="forgotPasswordForm" method="POST" action="forgot-password">
+                @csrf <!-- CSRF token -->
+                <div class="inputfield col-md-12">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required/>
+                    <div id="email-error" class="error-message"></div> 
+                </div>
+                <div class="inputfield">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>  
+ 
     {{-- <script>
         // Remove error message after 4 seconds
         setTimeout(function() {
@@ -294,8 +319,8 @@
         sessionStorage.setItem('shopping-cart', cartJSON);
         showCartTable();
     }
-
-    </script> --}}
+ --}}
+    </script>
 
     <script type='text/javascript' src="{{ asset('js/jquery-2.2.3.min.js')}}"></script>
     <script type='text/javascript' src="{{ asset('js/bootstrap.min.js')}}"></script>
@@ -304,7 +329,7 @@
     <script type="text/javascript">
     function openLoginPopup1() {
             document.getElementById('popupForm1').style.display = 'block';
-        }
+    }
     $(function () {
         var goToCartIcon = function($addTocartBtn){
         var $cartIcon = $(".my-cart-icon");
@@ -353,5 +378,19 @@
         },
         });
     });
+
+    <script>
+    $(document).ready(function() {
+        @if (session('success'))
+            $('#alertMessage').text("{{ session('success') }}");
+            $('#alertModal').modal('show');
+        @endif
+
+        @if (session('alert'))
+            $('#alertMessage').text("{{ session('alert') }}");
+            $('#alertModal').modal('show');
+        @endif
+    });
+</script>
     </script>
 

@@ -29,7 +29,8 @@ class User extends Authenticatable
         'bank_id',
         'account_no',
         'address',
-        'wallet'
+        'wallet',
+        'remember_token'
     ];
 
     public function userDetails()
@@ -45,7 +46,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**

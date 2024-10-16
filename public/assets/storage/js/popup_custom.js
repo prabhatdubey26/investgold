@@ -140,6 +140,16 @@ function closePopup1() {
     document.getElementById("popupForm1").style.display = "none";
 }
 
+document.getElementById("forgotLink").addEventListener("click", function(event) {
+    event.preventDefault();
+    document.getElementById("forgotPassword").style.display = "block";
+    document.getElementById("popupForm1").style.display = "none";
+});
+
+function closeForgotPassword() {
+    document.getElementById("forgotPassword").style.display = "none";
+}
+
 // document.getElementById("loginForm1").addEventListener("submit", function(event) {
 //     event.preventDefault();
 

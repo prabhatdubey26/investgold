@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\KYC;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Header;
+use App\Models\News;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,6 +15,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rule;
 use Razorpay\Api\Api;
 use App\Models\WalletTrasaction;
+use App\Notifications\ResetPasswordNotification;
 
 class UserController extends Controller
 {
@@ -153,7 +157,89 @@ private function uploadFile($file, $directory)
     {
         $user = User::with('kyc')->findOrFail(Auth::id());
         return view('user.profile',compact('user'));
-     }
+    }
+
+    public function changePassword()
+    {
+        $user = User::findOrFail(Auth::id());
+        $layout = 'user';
+        if($user->role==1){
+            $orders = Order::paginate(10);
+            $layout = 'auth';
+        }
+        return view('user.change-password',compact('user','layout'));
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $navigations = Header::all();
+        $team = Team::all();
+        $news = News::all();
+        $user = User::where('remember_token', $request->token)->first();
+        if(!$user){
+            abort(404);
+        }
+        return view('user.reset', compact('user','navigations','team','news'));
+    }
+
+    public function forgotPassword(Request $request)
+    {
+        $request->validate(['email' => 'required|email|exists:users,email']);
+        // Find the user by email
+        $user = User::where('email', $request->email)->first();
+        
+        if ($user) {
+            // Generate a password reset token
+            $token = \Str::random(60); // You might want to use Laravel's built-in token generation
+            $user->remember_token = $token;
+            $user->save();
+            // Send the password reset notification
+            $user->notify(new ResetPasswordNotification($token));
+           // Redirect with a success message
+        return redirect()->back()->with('success', 'Password reset link has been sent to your email.');
+    }
+
+    // Redirect with an alert message
+    return redirect()->back()->with('alert', 'Email not found. Please try again.');
+        
+    }
+
+
+    public function updateResetPassword(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'new_password' => 'required|min:6|confirmed', // Changed to 'confirmed'
+        ]);
+        // Retrieve the currently authenticated user
+        $user = User::where('remember_token', $request->token)->first();
+       
+        // Update the password
+        $user->password = Hash::make($request->new_password);
+        $user->remember_token = '';
+        $user->save();
+        return redirect('/')->with('success', 'Password changed successfully!');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'new_password' => 'required|min:6|confirmed', // Changed to 'confirmed'
+        ]);
+        // Retrieve the currently authenticated user
+        $user = User::findOrFail(Auth::id());
+       
+        // Update the password
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return redirect()->route('user.change-password')->with('success', 'Password changed successfully!');
+    }
+
+    
+
+
 
      public function bankDetails()
     {

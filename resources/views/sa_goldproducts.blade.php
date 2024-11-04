@@ -1,7 +1,7 @@
 <!-- resources/views/index.blade.php -->
-@include('include/header_main')
-@include('include/header')
-
+@extends('include/header_main')
+@section('title', 'SA Gold Product')
+@section('content')
 
  <section class=" videobox">
 <div class="container">
@@ -34,4 +34,4 @@
 	
 </div>
 </section>
-@include('include/footer')
+@endsection

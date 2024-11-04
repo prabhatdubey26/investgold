@@ -1,9 +1,9 @@
 <!-- resources/views/index.blade.php -->
 
 
-@include('include/header_main')
-@include('include/header')
-
+@extends('include/header_main')
+@section('title', 'Live Charts')
+@section('content')
 
     <!--video box-->
 
@@ -52,13 +52,9 @@
 	.tradingview-widget-copyright a:visited .blue-text {
 		color: #2962FF !important;
 	}
-	</style></div>   </div>
-			
+	</style></div>   
+	</div>	
 		</div>
 	</div>
-
-
-
 </body>
-
-@include('include/footer')
+@endsection

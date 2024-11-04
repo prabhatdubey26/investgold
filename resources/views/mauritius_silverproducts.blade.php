@@ -1,5 +1,7 @@
-@include('include/header_main')
-@include('include/header')
+@extends('include/header_main')
+@section('title', 'Mauritius Silver Product')
+@section('content')
+
 <section class=" videobox">
 <div class="container">
 <div class="row">
@@ -29,4 +31,4 @@
     @endforeach
 </div>
 </section>
-@include('include/footer')
+@endsection

@@ -1,7 +1,5 @@
-
 <section class="top">
     <div class="container">
-
     <div class="row">
 	<div class="footerbox col-lg-2">
          </div>
@@ -10,9 +8,7 @@
        </div>
        <div class="footerbox col-lg-4">
         <p>© 2024 INVESTGOLD 247 <span class="textcolor">  POPI ACT 2021 <br>
-
             INVESTGOLD T&C'S |  AML Policy (Anti-Money Laundering)<br>
-            
             </span>Gold & Silver Bullion Dealer - SOUTH AFRICA</p>
        </div>
        <div class="footerbox col-lg-4">
@@ -23,15 +19,10 @@
         </li>
 @endforeach
 </ul>
-
-       
        </div>
     </div>
 </div>
 </section>
-
-{{-- <script src="{{ asset('assets/storage/js/jquery-3.7.1.min.js') }}"></script> --}}
 <script src="{{ asset('assets/storage/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/storage/js/popup_custom.js') }}"></script>
-
 </html>

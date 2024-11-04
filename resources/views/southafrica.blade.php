@@ -1,13 +1,10 @@
 <!-- resources/views/index.blade.php -->
 
-
-@include('include/header_main')
-@include('include/header')
-
-
+@extends('include/header_main')
+@section('title', 'South Africa Products')
+@section('content')
  <section class=" videobox">
 <div class="container">
-
 <div class="row">
     <div class="col-md-6 col-lg-6 pl-lg-6">
 
@@ -31,5 +28,4 @@
 </div>
 </div>
 </section>
-
-@include('include/footer')
+@endsection

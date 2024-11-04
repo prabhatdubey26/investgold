@@ -17,7 +17,7 @@
 
 <meta name="google-site-verification" content="sVutg7cMWg_4nb02FzojmNc508EGJbzan87dKALvnHs" />
   <!-- Page Title -->
-  <title>InvestGold: The Leader in Bullion & Precious Metals Investments</title>
+  <title>@yield('title', 'InvestGold: The Leader in Bullion & Precious Metals Investments')</title>
   <!-- Favicon Icon -->
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
   <!-- Google Fonts Css-->
@@ -49,3 +49,8 @@
   background-color: rgba(0, 0, 0, 0) !important;
 }
 </style>	
+@include('include/header')
+
+@yield('content')
+
+@include('include/footer')

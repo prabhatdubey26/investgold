@@ -1,5 +1,7 @@
-@include('include/header_main')
-@include('include/header')
+@extends('include/header_main')
+@section('title', 'Checkout')
+@section('content')
+
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <div class="row">
@@ -69,4 +71,4 @@
     }
 </script>
 
-@include('include/footer')
+@endsection

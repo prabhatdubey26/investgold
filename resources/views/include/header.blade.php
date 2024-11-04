@@ -84,7 +84,7 @@
                                     <li class="nav-item submenu"><a class="nav-link" href="#">Live Charts</a>
                                         <ul>                                        
                                             <li class="nav-item"><a class="nav-link" href="{{ route('livechart') }}">Live South Africa Rand/$</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="{{ route('historicalchart') }}" target="_blank">Mauritian Charts</a></li>                                       
+                                            <li class="nav-item"><a class="nav-link" href="{{ route('historicalchart') }}" >Mauritian Charts</a></li>                                       
                                         
                                         </ul>
                                     </li>
@@ -378,19 +378,5 @@
         },
         });
     });
-
-    <script>
-    $(document).ready(function() {
-        @if (session('success'))
-            $('#alertMessage').text("{{ session('success') }}");
-            $('#alertModal').modal('show');
-        @endif
-
-        @if (session('alert'))
-            $('#alertMessage').text("{{ session('alert') }}");
-            $('#alertModal').modal('show');
-        @endif
-    });
-</script>
     </script>
 

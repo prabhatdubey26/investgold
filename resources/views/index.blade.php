@@ -1,13 +1,9 @@
 <!-- resources/views/index.blade.php -->
-
-
-@include('include/header_main')
-@include('include/header')
-
+@extends('include/header_main')
+@section('content')
 <section class="pt-5">
         <div class="container">
-            <div class="row">
-                
+            <div class="row"> 
         <div class="col-md-6 col-lg-6 pl-lg-6">
             <div class="headline">
                 <h5>Buy & Sell Bullion 24/7, anytime & anywhere!!</h5>
@@ -61,5 +57,4 @@
 </div>
 
 </body>
-
-@include('include/footer')
+@endsection

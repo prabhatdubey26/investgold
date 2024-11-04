@@ -1,13 +1,9 @@
 <!-- resources/views/index.blade.php -->
-
-
-@include('include/header_main')
-@include('include/header')
-
-
- <section class=" videobox">
+@extends('include/header_main')
+@section('title', 'Shop Page')
+@section('content')
+<section class=" videobox">
 <div class="container">
-
 <div class="row">
     <div class="col-md-6 col-lg-6 pl-lg-6">
          <div class="heding-title">
@@ -32,5 +28,4 @@
 </div>
 </div>
 </section>
-
-@include('include/footer')
+@endsection

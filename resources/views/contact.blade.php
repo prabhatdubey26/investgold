@@ -1,9 +1,9 @@
 <!-- resources/views/index.blade.php -->
 
 
-@include('include/header_main')
-@include('include/header')
-
+@extends('include/header_main')
+@section('title', 'Contact')
+@section('content')
 
     <!--video box-->
 <div>
@@ -232,4 +232,4 @@ input:focus, textarea:focus, keygen:focus, select:focus {
 
 </body>
 
-@include('include/footer')
+@endsection
